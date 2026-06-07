@@ -251,6 +251,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+.venue {
+  border-radius: 8px;
+}
 .row {
   display: grid;
   grid-template-columns: 286px 1fr;
@@ -258,10 +261,96 @@ body {
   gap: 22px;
   padding: 9px 10px 9px 4px;
   border-radius: 8px;
+  cursor: pointer;
   transition: background 0.15s ease;
 }
 .row:hover {
   background: rgba(40, 35, 20, 0.035);
+}
+.venue.open > .row {
+  background: rgba(40, 35, 20, 0.05);
+}
+.row:focus-visible {
+  outline: 2px solid var(--t1);
+  outline-offset: -2px;
+}
+.row-chevron {
+  flex: none;
+  color: var(--faint);
+  margin-right: 1px;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.7, 0.25, 1),
+    color 0.15s ease;
+}
+.venue.open .row-chevron {
+  transform: rotate(90deg);
+  color: var(--muted);
+}
+
+/* ---------- Expandable detail ---------- */
+.row-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.2, 0.7, 0.25, 1);
+}
+.row-detail.open {
+  grid-template-rows: 1fr;
+}
+.row-detail-inner {
+  overflow: hidden;
+  min-height: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.row-detail.open .row-detail-inner {
+  opacity: 1;
+}
+.detail-list {
+  margin: 0;
+  padding: 2px 12px 13px 33px;
+}
+.detail-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 5px 0;
+}
+.detail-item dt {
+  flex: none;
+  min-width: 42px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.detail-item dd {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  min-width: 0;
+}
+.detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--t1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  word-break: break-all;
+  transition: border-color 0.15s ease;
+}
+.detail-link:hover {
+  border-bottom-color: currentColor;
+}
+.detail-link svg {
+  flex: none;
+  opacity: 0.65;
+}
+.detail-empty {
+  color: var(--faint);
+  font-style: italic;
 }
 .row-name {
   min-width: 0;
@@ -386,7 +475,10 @@ body {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .fill {
+  .fill,
+  .row-detail,
+  .row-detail-inner,
+  .row-chevron {
     transition: none;
   }
 }

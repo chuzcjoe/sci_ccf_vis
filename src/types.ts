@@ -25,6 +25,8 @@ export interface VenueItem {
   field: Field;
   /** The impact value (IF or h5-index, depending on the view). */
   v: number;
+  /** Official homepage (publisher journal page / conference series site). */
+  url?: string;
 }
 
 /** A tier / grade band (e.g. 一区, CCF-A) holding its venues. */

@@ -7,3 +7,8 @@ import type { MetricKey } from "./types";
 export function formatValue(metricKey: MetricKey, v: number): string {
   return metricKey === "IF" ? v.toFixed(1) : String(v);
 }
+
+/** Strip protocol and trailing slash for a compact link label. */
+export function prettyUrl(url: string): string {
+  return url.replace(/^https?:\/\//, "").replace(/\/+$/, "");
+}
