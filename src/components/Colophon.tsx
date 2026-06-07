@@ -19,8 +19,9 @@ export function Colophon({ tiers, colors }: ColophonProps) {
           </span>
         ))}
       </div>
-      <div style={{ textAlign: "right", maxWidth: "42ch" }}>
-        数据为约 2023–2024 年的代表性数值，仅供示意，可能与最新官方数据存在出入。
+      <div style={{ textAlign: "right", maxWidth: "46ch" }}>
+        SCI 影响因子为 2024 JCR（2025 年发布，源自 BioxBio/Clarivate）；
+        CCF h5-index 为 2025 Google Scholar Metrics。两视图数值不可横向比较。
       </div>
     </footer>
   );
